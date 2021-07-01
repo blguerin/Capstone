@@ -1,0 +1,19 @@
+/*CSS document Drawn To You*/
+* {
+    font-family: Tahoma, sans-serif;
+}
+body {
+    background-color: #9fcefc;
+}
+ h1 {
+     color: black;
+     border-style: double;
+     border-radius: 25px;
+     padding-left: 25px;
+     padding-right: 25px;
+
+}
+button {
+    background-color: #0f62ab;
+    color: white;
+}
