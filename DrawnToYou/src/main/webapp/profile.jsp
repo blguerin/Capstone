@@ -10,9 +10,9 @@
 <body>
 	<div style="text-align: center">
 	<h1>Welcome to Drawn to You Profile</h1>
-	<b>${user.username} ($user.email})</b>
-	<br><br>
-	<a href="/LogoutServlet">Logout</a>
+		<form action="LogoutServlet" method="post">
+		<button type="submit">Logout</button>
+		</form>
 	</div>
 	
 	<%-- This is a JSP comment --%>

@@ -17,41 +17,16 @@
 	<div style="text-align: center">
 		<h1>Drawn To You</h1>
 		<h2>Please Login</h2>
-		<form action="login" method="post">
+		<form action="LoginServlet" method="post">
 		<label for="email">Email address:</label>
 		<input name="email" size="30"/>
 		<br><br>
 		<label for="password">Password:</label>
-		<input type="password" name="password" size="30"/>
-		<br>${message} 
-		<br><br>
+		<input type="password" name="password" size="30"/> 
+
 		<button type="submit">Login</button>
 		</form>
 	</div>
 </body>
-<script type="text/javascript">
- 
-    $(document).ready(function() {
-        $("#loginForm").validate({
-            rules: {
-                email: {
-                    required: true,
-                    email: true
-                },
-         
-                password: "required",
-            },
-             
-            messages: {
-                email: {
-                    required: "Please enter email",
-                    email: "Please enter a valid email address"
-                },
-                 
-                password: "Please enter password"
-            }
-        });
- 
-    });
-</script>
+
 </html>
