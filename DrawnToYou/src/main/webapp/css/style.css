@@ -1,19 +1,82 @@
 /*CSS document Drawn To You*/
+
 * {
     font-family: Tahoma, sans-serif;
 }
 body {
     background-color: #9fcefc;
 }
- h1 {
-     color: black;
-     border-style: double;
-     border-radius: 25px;
-     padding-left: 25px;
-     padding-right: 25px;
+h1 {
+    color: black;
+    border-style: double;
+    border-radius: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
 
 }
 button {
     background-color: #0f62ab;
     color: white;
 }
+
+
+/* Graham stuff */
+
+/* Profile picture, Bio, and Pinned portrait */
+#personalizedSection {
+	overflow: hidden;
+	height: 260px;
+	outline: 2px solid black;
+	position: relative;
+}
+#profilePicture {
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	height: 250px;
+	width:250px;
+	outline: 1px solid black;	
+}
+#pinnedPortrait {
+	position: absolute;
+    right: 5px;
+    top: 5px;
+    height: 250px;
+    width: 250px;
+    outline: 1px solid black;
+}
+#bio {
+	position: absolute;
+	display: block;
+	top: 5px;
+	left: 260px;
+	right: 260px;
+	height: 200px;
+	outline: 1px solid black;
+	overflow: hidden;	
+}
+/* Reels */
+
+/* I don't remember how to stop these from touching each other. Feel free to beautify. */
+.reel {
+    margin: 0 auto;
+    width: 550px;
+    height: 110px;
+    outline: 1px solid black;
+}
+.thumbnail {
+	position: relative;
+	float: left;
+	margin: 5px;
+	height: 100px;
+	width: 100px;
+	outline: 1px solid black;
+}
+
+
+
+
+
+
+
+

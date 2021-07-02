@@ -1,5 +1,5 @@
 package com.algonquin.drawntoyou.reels;
 
-public class ByUserReel {
+public class OutReel {
 
 }
