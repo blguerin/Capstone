@@ -5,52 +5,54 @@ import java.util.UUID;
 
 public class ProfilePic {
     
-    private UUID profilePhotoID;
-    private String hostLink;
-    private String modelUsername;
-    private Date submissionDate;
+    private UUID imageID;
+    private String sourceLink;
+    private String submitterUsername;
+//    private Date submissionDate; //Ignoring Date for now
     
-    public ProfilePic(UUID profilePhotoID, String hostLink, String modelUsername, Date submissionDate) {
-        this.profilePhotoID = UUID.randomUUID();
-        this.hostLink = hostLink;
-        this.modelUsername = modelUsername;
-        this.submissionDate = new Date();
+    public ProfilePic() {
+        
+    }
+    
+    public ProfilePic(UUID imageID, String sourceLink, String submitterUsername, Date submissionDate) {
+        this.imageID = UUID.randomUUID();
+        this.sourceLink = sourceLink;
+        this.submitterUsername = submitterUsername;
+//        this.submissionDate = new Date();
     }
 
     // Getters n Setters
-    public UUID getProfilePhotoID() {
-        return profilePhotoID;
+    public UUID getImageID() {
+        return imageID;
     }
 
-    public void setProfilePhotoID(UUID profilePhotoID) {
-        this.profilePhotoID = profilePhotoID;
+    public void setImageID(UUID imageID) {
+        this.imageID = imageID;
     }
 
-    public String getHostLink() {
-        return hostLink;
+    public String getSourceLink() {
+        return sourceLink;
     }
 
-    public void setHostLink(String hostLink) {
-        this.hostLink = hostLink;
+    public void setSourceLink(String sourceLink) {
+        this.sourceLink = sourceLink;
     }
 
-    public String getModelUsername() {
-        return modelUsername;
+    public String getSubmitterUsername() {
+        return submitterUsername;
     }
 
-    public void setModelUsername(String modelUsername) {
-        this.modelUsername = modelUsername;
+    public void setSubmitterUsername(String submitterUsername) {
+        this.submitterUsername = submitterUsername;
     }
 
-    public Date getSubmissionDate() {
-        return submissionDate;
-    }
-
-    public void setSubmissionDate(Date submissionDate) {
-        this.submissionDate = submissionDate;
-    }
-    
-    
+//    public Date getSubmissionDate() {
+//        return submissionDate;
+//    }
+//
+//    public void setSubmissionDate(Date submissionDate) {
+//        this.submissionDate = submissionDate;
+//    }  
     
     
 
