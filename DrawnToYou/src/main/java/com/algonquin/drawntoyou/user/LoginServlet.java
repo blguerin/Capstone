@@ -17,53 +17,52 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private UserDAO userDao;
     /**
      * Default constructor. 
      */
-    public LoginServlet() {
-        super();
-    }
-
+   // public LoginServlet() {
+    //    super();
+    //}
+	public void init() {
+		userDao = new UserDAO();
+	}
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	String email = request.getParameter("email");
-	String password = request.getParameter("password");
 	
-	UserDAO userDAO = new UserDAO();
-	
-	try {
-		User user = userDAO.checkLogin(email, password);
-		String toPage = "login.jsp";
-		
-		if (user != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("user", user);
-			toPage = "profile.jsp";
-		}
-		else {
-			String message = "Invalid login email/password";
-			request.setAttribute("message", message);
-		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher(toPage);
-		dispatcher.forward(request, response);
-		
-	} catch (SQLException | ClassNotFoundException e) {
-		throw new ServletException(e);
-	}
-}
-
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-	//}
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	}
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		
+		User user = new User(email, password);
+		
+		try {
+			
+			if (userDao.checkLogin(user)) {
+				response.sendRedirect("profile.jsp");
+			}
+			else {
+				response.sendRedirect("login.jsp");
+			}
 
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		
+	
+	}
 }
+
+
