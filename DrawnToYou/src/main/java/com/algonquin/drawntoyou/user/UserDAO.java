@@ -6,39 +6,36 @@ import com.algonquin.drawntoyou.dao.ConnectDB;
 
 public class UserDAO {
 	
-	public User checkLogin(String email, String password) throws SQLException, ClassNotFoundException {
+	public boolean checkLogin(User user) throws SQLException, ClassNotFoundException {
+		boolean status = false;
 		
-//		String jdbcURL = "jdbc:mysql://localhost:3306/DrawnToYou";
-//		String dbUser = "root";
-//		String dbPassword = "";
-//		
-//		Class.forName("com.mysql.jdbc.Driver");
-//		Connection connection = DriverManager.getConnection( jdbcURL, dbUser, dbPassword);
-	    
-	    // Use this line for all DAO connections.
-	    Connection connection = ConnectDB.getConnectionToDB();
-	    
-	    
-	    // I don't think this query is legal. You could just "SELECT * FROM user;"
-		String sql = "SELECT * FROM user WHERE email = ? and password = ?";
+		//String jdbcURL = "jdbc:mysql://localhost:3306";
+		//String dbUser = "root";
+		//String dbPassword = "password";
+		
+		//Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		try {
+			//Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+		
+	   	// Use this line for all DAO connections.
+	   	Connection connection = ConnectDB.getConnectionToDB();
+
+		String sql = "SELECT * FROM db.users WHERE email = ? AND password = ?";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		
-		statement.setString(1, email);
-		statement.setString(2, password);
+		statement.setString(1, user.getEmail());
+		statement.setString(2, user.getPassword());
 		
 		ResultSet result = statement.executeQuery();
+		status = result.next();
 		
-		User user = null;
-		
-		// Added a few more attributes to User so the constructor is hungry for more params.
-		if (result.next()) {
-			user = new User(email, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
-		connection.close();
-		
-		return user;
-		
+		return status;
+			
 	}
 
 }
