@@ -13,11 +13,17 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Random;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+
+
+
+
+
 
 
 
@@ -66,7 +72,7 @@ public class SignUpServlet extends HttpServlet
 	    request.setAttribute("password",password);
 	    request.setAttribute("verificationCode", verificationCode);
 	    
-	    request.getRequestDispatcher("/SignUp.jsp").forward(request, response);
+	    
 	    
 	    SignUpDatabase sendInfo = new SignUpDatabase();
 	    sendInfo.setUsername(username);
@@ -96,7 +102,7 @@ public class SignUpServlet extends HttpServlet
 	    	      try(Connection conn = DriverManager.getConnection(DB_URL_WITH_TABLE, USER, PASS);
 	    	    	         Statement stmt = conn.createStatement();
 	    	    	      ) {		      
-	    	    	         String sql = "CREATE TABLE SIGN_UP_INFO( USERNAME VARCHAR(20),PASSWORD VARCHAR(20),VERIFICATION_CODE VARCHAR(4));";
+	    	    	         String sql = "CREATE TABLE SIGN_UP_INFO(EMAIL VARCHAR(20),PASSWORD VARCHAR(20),VERIFICATION_CODE VARCHAR(4));";
 	    	    	         stmt.executeUpdate(sql);
 	    	    	         System.out.println("Table created successfully....");   	  
 	    	    	      } catch (SQLException e) {
@@ -107,9 +113,9 @@ public class SignUpServlet extends HttpServlet
 	    	      try(Connection conn = DriverManager.getConnection(DB_URL_WITH_TABLE, USER, PASS);
 	    	    		  
 	    	  	      ) {		      
-	    	    	  String query = " INSERT INTO SIGN_UP_INFO (USERNAME,PASSWORD,VERIFICATION_CODE)"+ " values (?, ?, ?)";
+	    	    	  String query = " INSERT INTO SIGN_UP_INFO (EMAIL,PASSWORD,VERIFICATION_CODE)"+ " values (?, ?, ?)";
 	    	    	   PreparedStatement preparedStmt = conn.prepareStatement(query);
-	    	    	      preparedStmt.setString (1, username);
+	    	    	      preparedStmt.setString (1, emailAddress);
 	    	    	      preparedStmt.setString (2, password);
 	    	    	      preparedStmt.setString   (3, verificationCode);
 	    	    	      preparedStmt.execute();
@@ -120,18 +126,13 @@ public class SignUpServlet extends HttpServlet
 	    	  	      }
 	    	      
 	    	      
-	    	      try(Connection conn = DriverManager.getConnection(DB_URL_WITH_TABLE, USER, PASS);
-	    	   	         Statement stmt = conn.createStatement();
-	    	   	      ) {		      
-	    	   	         String sql = "SELECT * FROM SIGN_UP_INFO;";
-	    	   	         stmt.executeUpdate(sql);
-	    	   	         System.out.println(stmt);   	  
-	    	   	      } catch (SQLException e) {
-	    	   	    	  System.out.println("The user has either been created,\nor there was an error.");
-	    	   	         e.printStackTrace();
-	    	   	      }
-	}
+	    	      
+
+	    	      
+	    	      
+	    	      response.sendRedirect("http://localhost:8080/DrawnToYou/verify.jsp");  
 	
 
 
+}
 }
