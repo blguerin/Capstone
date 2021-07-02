@@ -10,12 +10,12 @@ public class ConnectDB {
         Connection connection = null;
         
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             
             // Database connection info. Update with your own mySQL login info if needed.
-            String url = "jdbc:mysql://localhost:3306/drawntoyou";
+            String url = "jdbc:mysql://localhost:3306";
             String user = "root";
-            String password = "";
+            String password = "password";
             
             connection = DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException e) {
