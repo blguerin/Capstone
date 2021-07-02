@@ -15,9 +15,9 @@ public class ConnectDB {
             // Database connection info. Update with your own mySQL login info if needed.
             String url = "jdbc:mysql://localhost:3306/drawntoyou";
             String user = "root";
-            String pass = "";
+            String password = "";
             
-            connection = DriverManager.getConnection(url, user, pass);
+            connection = DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException e) {
             System.out.println("Missing driver");
             e.printStackTrace();

@@ -11,7 +11,7 @@ public class ProfilePic {
     private Date submissionDate;
     
     public ProfilePic(UUID profilePhotoID, String hostLink, String modelUsername, Date submissionDate) {
-        this.profilePhotoID = profilePhotoID;
+        this.profilePhotoID = UUID.randomUUID();
         this.hostLink = hostLink;
         this.modelUsername = modelUsername;
         this.submissionDate = new Date();
