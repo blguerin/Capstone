@@ -16,6 +16,9 @@ public class User {
         this.verificationCode = verificationCode;
         this.verificationStatus = verificationStatus;
     }
+	public User(String email, String password) {
+		this.email = email;
+		this.password = password;
 	
 	// Gets&Sets
 	public String getUsername() {
