@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+// TODO: make Singleton
+
 public class ConnectDB {
     
     public static Connection getConnectionToDB() {
@@ -15,7 +17,7 @@ public class ConnectDB {
             // Database connection info. Update with your own mySQL login info if needed.
             String url = "jdbc:mysql://localhost:3306";
             String user = "root";
-            String password = "password";
+            String password = "";
             
             connection = DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException e) {

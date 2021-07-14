@@ -1,15 +1,14 @@
-package com.algonquin.drawntoyou.user;
+package com.algonquin.drawntoyou.servlets;
 
-import java.io.IOException;
-import java.sql.SQLException;
+import com.algonquin.drawntoyou.dao.UserDAO;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * Servlet implementation class LoginServlet
@@ -45,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		User user = new User(email, password);
+		com.algonquin.drawntoyou.user.User user = new com.algonquin.drawntoyou.user.User(email, password);
 		
 		try {
 			
