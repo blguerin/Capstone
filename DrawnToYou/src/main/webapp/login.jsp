@@ -1,32 +1,40 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-<script type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
-<link href="css/style.css" rel="stylesheet" type="text/css"/>
-<title>Drawn To You</title>
+<title>Log In | DrawnToYou</title>
+<link rel="stylesheet" href="css/login.css">
+
+<ul>
+  <a href="http://localhost:8080/DrawnToYou/login.jsp">
+  <img src="images/logo.png" style="width:100px;height:100px;border-radius:7px;"/>
+  </a>
+</ul>
+
 </head>
+
 <body>
-	<div style="text-align: center">
-		<h1>Drawn To You</h1>
-		<h2>Please Login</h2>
-		<form action="LoginServlet" method="post">
-		<label for="email">Email address:</label>
-		<input name="email" size="30"/>
-		<br><br>
-		<label for="password">Password:</label>
-		<input type="password" name="password" size="30"/> 
+<img src="images/login2.gif" style="width:105%;height:90%;position:absolute; top:140px;left:-10px;z-index:1;">
+<center><div class="sign-up-box">
+	<div class="sign-up-text">
+		<center><h1 style="  font-size:xxx-large; background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative; top:100px;">Log In</h1></center>
 
-		<button type="submit">Login</button>
-		</form>
-	</div>
+		<form action="VerifyServlet" method="get">
+		<input type="text" name="email" id="email" placeholder="Enter your email address..." style="height:30px;width:300px;background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;border:solid grey 1px; border-radius:50px;position: relative; top:100px;"><br>
+		<input type="text" name="password" id="password" placeholder="Enter your password..." style="height:30px;width:300px;background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;border:solid grey 1px; border-radius:50px;position: relative; top:100px;"><br>
+		
+		<input type="Submit" value="LOG IN" style="color:white;height:30px;width:300px;border:none;border-radius:50px;background: linear-gradient(#3e8bff, #ff5e84);position: relative; top:100px;">
+</form>
+		<center><h1 style="  font-size:xx-large; color:grey;position: relative; top:130px;"">Don't have an account?</h1></center>
+		<form action="http://localhost:8080/DrawnToYou/SignUp.jsp">
+    		<input type="Submit" value="SIGN UP" style="color:white;height:30px;width:300px;border:none;border-radius:50px;background: linear-gradient(#3e8bff, #ff5e84); position: relative; top:130px;">
+        </form>
+
+</a></div>
+</div></center>
+
 </body>
-
 </html>

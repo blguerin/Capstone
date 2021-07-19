@@ -50,10 +50,10 @@ public class LoginServlet extends HttpServlet {
 		try {
 			
 			if (userDao.checkLogin(user)) {
-				response.sendRedirect("profile.jsp");
+				response.sendRedirect("http://localhost:8080/DrawnToYou/LoginServlet/profile.jsp");
 			}
 			else {
-				response.sendRedirect("login.jsp");
+				response.sendRedirect("http://localhost:8080/DrawnToYou/LoginServlet/login.jsp");
 			}
 
 			
