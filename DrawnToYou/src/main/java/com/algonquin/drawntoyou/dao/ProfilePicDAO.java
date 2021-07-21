@@ -1,19 +1,15 @@
 package com.algonquin.drawntoyou.dao;
 
+import com.algonquin.drawntoyou.images.ProfilePic;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
-
-import com.algonquin.drawntoyou.images.ProfilePic;
-import com.algonquin.loggy.beans.Log;
-import com.algonquin.loggy.beans.TextLog;
-import com.algonquin.loggy.dao.DBConnection;
 
 /* This is very similar to Artwork but slightly different. Artwork only has one more attribute. 
    This class can implement a CRUD interface that can be used for all CRUD operations within the program

@@ -1,24 +1,13 @@
-package com.algonquin.drawntoyou.user;
+package com.algonquin.drawntoyou.servlets;
 
-import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Random;
-
-import javax.servlet.*;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.*;
+import java.util.Random;
 
 
 
@@ -74,7 +63,7 @@ public class SignUpServlet extends HttpServlet
 	    
 	    
 	    
-	    SignUpDatabase sendInfo = new SignUpDatabase();
+	    com.algonquin.drawntoyou.user.SignUpDatabase sendInfo = new com.algonquin.drawntoyou.user.SignUpDatabase();
 	    sendInfo.setUsername(username);
 	    sendInfo.setUsername(password);
 	    sendInfo.setUsername(verificationCode);

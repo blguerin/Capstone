@@ -1,22 +1,18 @@
-package com.algonquin.drawntoyou.user;
+package com.algonquin.drawntoyou.dao;
 
-import java.sql.*;
+import com.algonquin.drawntoyou.user.User;
 
-import com.algonquin.drawntoyou.dao.ConnectDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class UserDAO {
 	
 	public boolean checkLogin(User user) throws SQLException, ClassNotFoundException {
 		boolean status = false;
 		
-		//String jdbcURL = "jdbc:mysql://localhost:3306";
-		//String dbUser = "root";
-		//String dbPassword = "password";
-		
-		//Class.forName("com.mysql.cj.jdbc.Driver");
-		
 		try {
-			//Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
 		
 	   	// Use this line for all DAO connections.
 	   	Connection connection = ConnectDB.getConnectionToDB();
