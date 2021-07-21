@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Capstone:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Capstone_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Capstone/web/Web" />
+    </root>
+  </artifact>
+</component>

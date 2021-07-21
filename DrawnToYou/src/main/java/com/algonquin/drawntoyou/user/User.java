@@ -19,46 +19,48 @@ public class User {
 	public User(String email, String password) {
 		this.email = email;
 		this.password = password;
-	
-	// Gets&Sets
-	public String getUsername() {
-		return this.username;
 	}
-	
+
+	// Gets&Sets
+
+
+	public String getUsername() {
+		return username;
+	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public String getEmail() {
-		return this.email;
+		return email;
 	}
-	
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-    public int getVerificationCode() {
-        return verificationCode;
-    }
+	public int getVerificationCode() {
+		return verificationCode;
+	}
 
-    public void setVerificationCode(int verificationCode) {
-        this.verificationCode = verificationCode;
-    }
+	public void setVerificationCode(int verificationCode) {
+		this.verificationCode = verificationCode;
+	}
 
-    public String getVerificationStatus() {
-        return verificationStatus;
-    }
+	public String getVerificationStatus() {
+		return verificationStatus;
+	}
 
-    public void setVerificationStatus(String verificationStatus) {
-        this.verificationStatus = verificationStatus;
-    }
-
+	public void setVerificationStatus(String verificationStatus) {
+		this.verificationStatus = verificationStatus;
+	}
 }
