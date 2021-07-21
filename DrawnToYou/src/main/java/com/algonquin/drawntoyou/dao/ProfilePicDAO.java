@@ -24,7 +24,6 @@ public class ProfilePicDAO {
         Map<UUID, ProfilePic> profilePicList = new LinkedHashMap<UUID, ProfilePic>();
 
         try {
-            
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
             // write select query to get all the profilePics
