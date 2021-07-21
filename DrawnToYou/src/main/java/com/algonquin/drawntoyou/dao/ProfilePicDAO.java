@@ -25,7 +25,7 @@ public class ProfilePicDAO {
 
         try {
             
-            Connection connection = ConnectDB.getConnectionToDB();
+            Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
             // write select query to get all the profilePics
             String sql = "SELECT * FROM PROFILE_PIC;";

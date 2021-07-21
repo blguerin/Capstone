@@ -4,9 +4,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-// TODO: make Singleton
 
 public class ConnectDB {
+    
+    private static final ConnectDB connectDB = new ConnectDB();
+    private static boolean initialized = false;
+    
+    // Singleton pattern applied to ConnectDB
+    public static synchronized ConnectDB getInstance() {
+        if (initialized) return connectDB;
+        initialized = true;
+        return connectDB;
+    }
     
     public static Connection getConnectionToDB() {
         Connection connection = null;
@@ -14,7 +23,7 @@ public class ConnectDB {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
-            // Database connection info. Update with your own mySQL login info if needed.
+            // Database credentials
             String url = "jdbc:mysql://localhost:3306";
             String user = "root";
             String password = "";
