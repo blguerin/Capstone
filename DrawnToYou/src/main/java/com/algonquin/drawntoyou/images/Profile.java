@@ -1,6 +1,7 @@
 package com.algonquin.drawntoyou.images;
 
 import com.algonquin.drawntoyou.reels.InReel;
+import com.algonquin.drawntoyou.reels.OutReel;
 
 public class Profile {
     

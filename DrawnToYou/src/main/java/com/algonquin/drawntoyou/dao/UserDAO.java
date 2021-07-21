@@ -17,7 +17,7 @@ public class UserDAO {
 	   	// Use this line for all DAO connections.
 	   	Connection connection = ConnectDB.getConnectionToDB();
 
-		String sql = "SELECT * FROM db.users WHERE email = ? AND password = ?";
+		String sql = "SELECT * FROM drawntoyou.user WHERE email = ? AND password = ?";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		
 		statement.setString(1, user.getEmail());
