@@ -34,10 +34,10 @@ public class SignUpServlet extends HttpServlet
 	
 	private static final long serialVersionUID = 1L;
 	  static final String DB_URL = "jdbc:mysql://localhost:3306/";
-	  static final String DB_URL_WITH_TABLE = "jdbc:mysql://localhost:3306/SIGN_UP_DATABASE";
+	  static final String DB_URL_WITH_TABLE = "jdbc:mysql://localhost:3306/DTY_USERS";
 	  static final String USER = "administrator";
 	  static final String PASS = "rootPasswordDrawn2You";
-	  static final String DB = "SIGN_UP_DATABASE";
+	  static final String DB = "DTY_USERS";
 
 
 
@@ -75,9 +75,9 @@ public class SignUpServlet extends HttpServlet
 	    
 	    
 	    SignUpDatabase sendInfo = new SignUpDatabase();
-	    sendInfo.setUsername(username);
-	    sendInfo.setUsername(password);
-	    sendInfo.setUsername(verificationCode);
+	    sendInfo.setEmail(emailAddress);
+	    sendInfo.setEmail(password);
+	    sendInfo.setEmail(verificationCode);
 	    
 		 try {
 	         Class.forName("com.mysql.jdbc.Driver");
@@ -91,7 +91,7 @@ public class SignUpServlet extends HttpServlet
 	      try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 	    	         Statement stmt = conn.createStatement();
 	    	      ) {		      
-	    	         String sql = "CREATE DATABASE SIGN_UP_DATABASE;";
+	    	         String sql = "CREATE DATABASE DTY_USERS;";
 	    	         stmt.executeUpdate(sql);
 	    	         System.out.println("Database created successfully...");   	  
 	    	      } catch (SQLException e) {
@@ -102,7 +102,7 @@ public class SignUpServlet extends HttpServlet
 	    	      try(Connection conn = DriverManager.getConnection(DB_URL_WITH_TABLE, USER, PASS);
 	    	    	         Statement stmt = conn.createStatement();
 	    	    	      ) {		      
-	    	    	         String sql = "CREATE TABLE SIGN_UP_INFO(EMAIL VARCHAR(20),PASSWORD VARCHAR(20),VERIFICATION_CODE VARCHAR(4));";
+	    	    	         String sql = "CREATE TABLE USER_INFO(EMAIL VARCHAR(20),PASSWORD VARCHAR(20),VERIFICATION_CODE VARCHAR(4));";
 	    	    	         stmt.executeUpdate(sql);
 	    	    	         System.out.println("Table created successfully....");   	  
 	    	    	      } catch (SQLException e) {
@@ -113,7 +113,7 @@ public class SignUpServlet extends HttpServlet
 	    	      try(Connection conn = DriverManager.getConnection(DB_URL_WITH_TABLE, USER, PASS);
 	    	    		  
 	    	  	      ) {		      
-	    	    	  String query = " INSERT INTO SIGN_UP_INFO (EMAIL,PASSWORD,VERIFICATION_CODE)"+ " values (?, ?, ?)";
+	    	    	  String query = " INSERT INTO USER_INFO (EMAIL,PASSWORD,VERIFICATION_CODE)"+ " values (?, ?, ?)";
 	    	    	   PreparedStatement preparedStmt = conn.prepareStatement(query);
 	    	    	      preparedStmt.setString (1, emailAddress);
 	    	    	      preparedStmt.setString (2, password);

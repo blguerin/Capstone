@@ -8,26 +8,26 @@ import java.sql.Statement;
 
 public class SignUpDatabase {
    static final String DB_URL = "jdbc:mysql://localhost:3306/";
-   static final String DB_URL_WITH_TABLE = "jdbc:mysql://localhost:3306/SIGN_UP_DATABASE";
+   static final String DB_URL_WITH_TABLE = "jdbc:mysql://localhost:3306/USERS";
    static final String USER = "administrator";
    static final String PASS = "rootPasswordDrawn2You";
-   static final String DB = "SIGN_UP_DATABASE";
-   private static String username;
+   static final String DB = "USERS";
+   private static String emailAddress;
    private static String password;
    private static String verificationCode;
    
    public SignUpDatabase() {
-	   username = "100";
+	   emailAddress = "100";
 	   password = "1000";
 	   verificationCode = "10000";
    }
    
-   public String getUsername() {
-	   return username;
+   public String getEmail() {
+	   return emailAddress;
    }
    
-   public void setUsername(String username) {
-	   this.username = username;
+   public void setEmail(String emailAddress) {
+	   this.emailAddress = emailAddress;
 	   
 	}
    
@@ -67,7 +67,7 @@ public class SignUpDatabase {
       try(Connection conn = DriverManager.getConnection(DB_URL_WITH_TABLE, USER, PASS);
     	         Statement stmt = conn.createStatement();
     	      ) {		      
-    	         String sql = "CREATE TABLE SIGN_UP_INFO( USERNAME VARCHAR(20),PASSWORD VARCHAR(20),VERIFICATION_CODE VARCHAR(4));";
+    	         String sql = "CREATE TABLE USER_TABLE( EMAIL VARCHAR(20),PASSWORD VARCHAR(20),VERIFICATION_CODE VARCHAR(4));";
     	         stmt.executeUpdate(sql);
     	         System.out.println("Table created successfully....");   	  
     	      } catch (SQLException e) {
@@ -78,9 +78,9 @@ public class SignUpDatabase {
       try(Connection conn = DriverManager.getConnection(DB_URL_WITH_TABLE, USER, PASS);
     		  
   	      ) {		      
-    	  String query = " INSERT INTO SIGN_UP_INFO (USERNAME,PASSWORD,VERIFICATION_CODE)"+ " values (?, ?, ?)";
+    	  String query = " INSERT INTO SIGN_UP_INFO (EMAIL,PASSWORD,VERIFICATION_CODE)"+ " values (?, ?, ?)";
     	   PreparedStatement preparedStmt = conn.prepareStatement(query);
-    	      preparedStmt.setString (1, username);
+    	      preparedStmt.setString (1, emailAddress);
     	      preparedStmt.setString (2, password);
     	      preparedStmt.setString   (3, verificationCode);
     	      preparedStmt.execute();
