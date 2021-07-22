@@ -1,0 +1,35 @@
+ul {
+  list-style-type: none;
+  margin-top: -100;
+  margin-left: -10px;
+  margin-right: -10px;
+  padding: 10px 16px;
+  overflow: hidden;
+  border-bottom: solid #e8e8e8 1px;
+  background-color: #ffffff;
+  height: 100px;
+}
+
+body{
+ 
+  background:url(/images/login.gif); background-repeat:repeat; 
+  overflow-x: hidden;
+  overflow-y:hidden;
+}
+
+.sign-up-text{
+ font-family:"Helvetica";
+ font-size:30px;
+
+}
+
+.sign-up-box{
+ position:relative;
+ top: 150px;
+ background-color: #efefef;
+ width: 500px;
+ height: 500px;
+
+ border-radius: 9px;
+ z-index:2;
+}
