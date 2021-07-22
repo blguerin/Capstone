@@ -22,11 +22,9 @@ public class ProfilePicDAO {
         try {
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            // write select query to get all the profilePics
             String sql = "SELECT * FROM PROFILE_PIC;";
             PreparedStatement statement = connection.prepareStatement(sql);
 
-            // execute query, get resultset and return User info
             ResultSet set = statement.executeQuery();
             while (set.next()) {
                 profilePic = new ProfilePic();
@@ -47,12 +45,10 @@ public class ProfilePicDAO {
             
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            // write select query to get the profilePic
             String sql = "SELECT * FROM PROFILE_PIC WHERE Username=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);
 
-            // execute query, get resultset and return ProfilePic info
             ResultSet set = statement.executeQuery();
             while (set.next()) {
                 profilePic = new ProfilePic();
@@ -73,13 +69,11 @@ public class ProfilePicDAO {
             
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            // write select query to get the log (Add date later)
             String sql = "INSERT INTO PROFILE_PIC (Username, Source) VALUES (?, ?);";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, profilePic.getUsername());
             statement.setString(2, profilePic.getSource());
             
-            // execute query, update resultset
             statement.execute();
 
         } catch (SQLException exception) {
@@ -94,13 +88,11 @@ public class ProfilePicDAO {
             
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            // write select query to get the profilePic
             String sql = "UPDATE PROFILE_PIC SET Source=? WHERE Username=?;";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, profilePic.getSource());
             statement.setString(2, profilePic.getUsername());
 
-            // execute query, update resultset
             statement.execute();
 
         } catch (SQLException exception) {
@@ -115,12 +107,10 @@ public class ProfilePicDAO {
   
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            // write select query to get the log
-            String sql = "DELETE FROM PROFILE WHERE Username=?;";
+            String sql = "DELETE FROM PROFILE_PIC WHERE Username=?;";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);
 
-            // execute query, delete resultset
             statement.execute();
 
         } catch (SQLException exception) {
