@@ -18,13 +18,13 @@
 		<h1>Drawn To You</h1>
 		<h2>Please Login</h2>
 		<form action="LoginServlet" method="post">
-		<label for="email">Email address:</label>
-		<input name="email" size="30"/>
-		<br><br>
-		<label for="password">Password:</label>
-		<input type="password" name="password" size="30"/> 
+		  <label for="email">Email address:</label>
+		  <input name="email" size="30"/>
+		  <br><br>
+		  <label for="password">Password:</label>
+		  <input type="password" name="password" size="30"/> 
 
-		<button type="submit">Login</button>
+		  <button type="submit">Login</button>
 		</form>
 	</div>
 </body>

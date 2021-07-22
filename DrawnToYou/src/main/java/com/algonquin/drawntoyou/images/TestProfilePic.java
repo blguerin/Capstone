@@ -6,28 +6,28 @@ import java.util.UUID;
 public class TestProfilePic {
     
     private UUID profilePhotoID = UUID.randomUUID();
-    private String hostLink = "placeholder";
-    private String modelUsername = "Graham";
+    private String source = "https://picsum.photos/250";
+    private String user = "Graham";
     private Date submissionDate = new Date();
     
-    // Gs and Ss
+    // Gets n Sets
     public UUID getProfilePhotoID() {
         return profilePhotoID;
     }
     public void setProfilePhotoID(UUID profilePhotoID) {
         this.profilePhotoID = profilePhotoID;
     }
-    public String getHostLink() {
-        return hostLink;
+    public String getSource() {
+        return source;
     }
-    public void setHostLink(String hostLink) {
-        this.hostLink = hostLink;
+    public void setSource(String source) {
+        this.source = source;
     }
-    public String getModelUsername() {
-        return modelUsername;
+    public String getUser() {
+        return user;
     }
-    public void setModelUsername(String modelUsername) {
-        this.modelUsername = modelUsername;
+    public void setUser(String user) {
+        this.user = user;
     }
     public Date getSubmissionDate() {
         return submissionDate;
@@ -35,7 +35,5 @@ public class TestProfilePic {
     public void setSubmissionDate(Date submissionDate) {
         this.submissionDate = submissionDate;
     }
-    
-    
-
+   
 }

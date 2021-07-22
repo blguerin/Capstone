@@ -1,6 +1,7 @@
 package com.algonquin.drawntoyou.servlets;
 
 import com.algonquin.drawntoyou.dao.UserDAO;
+import com.algonquin.drawntoyou.user.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,12 +45,17 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		com.algonquin.drawntoyou.user.User user = new com.algonquin.drawntoyou.user.User(email, password);
+		User user = new User(email, password);
 		
 		try {
 			
 			if (userDao.checkLogin(user)) {
 				response.sendRedirect("profile.jsp");
+				// TODO
+				// Create or change user object with these credentials. pull the rest of the user's data from DB. This way all 
+				// actions will be by the logged in user. Perhaps User should be singleton as well?
+				
+				// Also create a Profile object that will pull data from DB to load profilepic, pinned pic, and both reels.
 			}
 			else {
 				response.sendRedirect("login.jsp");

@@ -1,7 +1,5 @@
 package com.algonquin.drawntoyou.dao;
 
-import com.algonquin.drawntoyou.images.ProfilePic;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,17 +9,15 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 
-/* This is very similar to Artwork but slightly different. Artwork only has one more attribute. 
-   This class can implement a CRUD interface that can be used for all CRUD operations within the program
-   as it does in the Assignment 3 solution. For MVP all images are Profile Pics. */
+import com.algonquin.drawntoyou.images.ProfilePic;
 
 public class ProfilePicDAO {
     
-    public Map<UUID, ProfilePic> readProfilePics() {
+    public Map<String, ProfilePic> readProfilePics() {
         
         ProfilePic profilePic = null;
         
-        Map<UUID, ProfilePic> profilePicList = new LinkedHashMap<UUID, ProfilePic>();
+        Map<String, ProfilePic> profilePicList = new LinkedHashMap<String, ProfilePic>();
 
         try {
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
@@ -34,12 +30,10 @@ public class ProfilePicDAO {
             ResultSet set = statement.executeQuery();
             while (set.next()) {
                 profilePic = new ProfilePic();
-                profilePic.setImageID(UUID.fromString(set.getString("Id")));
-                profilePic.setSourceLink(set.getString("SourceLink"));
-                profilePic.setSubmitterUsername(set.getString("SubmitterUsername"));
-//                profilePic.setSubmissionDate(set.getXXXXX("SubmissionDate"));
-                
-                profilePicList.put(profilePic.getImageID(), profilePic);
+                profilePic.setUsername(set.getString("Username"));
+                profilePic.setSource(set.getString("Source"));
+                           
+                profilePicList.put(profilePic.getUsername(), profilePic);
             }
         } catch (SQLException exception) {
             exception.printStackTrace();
@@ -47,25 +41,23 @@ public class ProfilePicDAO {
         return profilePicList;
     }
     
-    public ProfilePic readProfilePic(String imageID) {
+    public ProfilePic readProfilePic(String username) {
         ProfilePic profilePic = null;
         try {
             
-            Connection connection = ConnectDB.getConnectionToDB();
+            Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
             // write select query to get the profilePic
-            String sql = "SELECT * FROM PROFILE_PIC WHERE ID=?";
+            String sql = "SELECT * FROM PROFILE_PIC WHERE Username=?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, imageID);
+            statement.setString(1, username);
 
             // execute query, get resultset and return ProfilePic info
             ResultSet set = statement.executeQuery();
             while (set.next()) {
                 profilePic = new ProfilePic();
-                profilePic.setImageID(UUID.fromString(set.getString("ID")));
-                profilePic.setSourceLink(set.getString("SourceLink"));
-                profilePic.setSubmitterUsername(set.getString("SubmitterUsername"));
-//                profilePic.setSubmissionDate(set.getXXXXX("SubmissionDate"));
+                profilePic.setUsername(set.getString("Username"));
+                profilePic.setSource(set.getString("Source"));       
             }
 
         } catch (SQLException exception) {
@@ -76,18 +68,17 @@ public class ProfilePicDAO {
         return profilePic;
     }
     
-    public void createLog(ProfilePic profilePic) {
+    public void createProfilePic(ProfilePic profilePic) {
         try {
             
-            Connection connection = ConnectDB.getConnectionToDB();
+            Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
             // write select query to get the log (Add date later)
-            String sql = "INSERT INTO PROFILE_PIC (ID, SourceLink, SubmitterUsername) VALUES (?, ?, ?);";
+            String sql = "INSERT INTO PROFILE_PIC (Username, Source) VALUES (?, ?);";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, profilePic.getImageID().toString());
-            statement.setString(2, profilePic.getSourceLink());
-            statement.setString(3, profilePic.getSubmitterUsername());
-
+            statement.setString(1, profilePic.getUsername());
+            statement.setString(2, profilePic.getSource());
+            
             // execute query, update resultset
             statement.execute();
 
@@ -101,14 +92,13 @@ public class ProfilePicDAO {
     public void updateProfilePic(ProfilePic profilePic) {
         try {
             
-            Connection connection = ConnectDB.getConnectionToDB();
+            Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
             // write select query to get the profilePic
-            String sql = "UPDATE PROFILE_PIC SET SourceLink=?, SubmitterUsername=? WHERE ID=?;";
+            String sql = "UPDATE PROFILE_PIC SET Source=? WHERE Username=?;";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, profilePic.getSourceLink());
-            statement.setString(2, profilePic.getSubmitterUsername());
-            statement.setString(3, profilePic.getImageID().toString());
+            statement.setString(1, profilePic.getSource());
+            statement.setString(2, profilePic.getUsername());
 
             // execute query, update resultset
             statement.execute();
@@ -120,15 +110,15 @@ public class ProfilePicDAO {
         }
     }
     
-    public void deleteProfilePic(String imageID) {
+    public void deleteProfilePic(String username) {
         try {
   
-            Connection connection = ConnectDB.getConnectionToDB();
+            Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
             // write select query to get the log
-            String sql = "DELETE FROM PROFILE WHERE ID=?;";
+            String sql = "DELETE FROM PROFILE WHERE Username=?;";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, UUID.fromString(imageID).toString());
+            statement.setString(1, username);
 
             // execute query, delete resultset
             statement.execute();
@@ -141,33 +131,11 @@ public class ProfilePicDAO {
     }
     
     public void createOrUpdateProfilePic(ProfilePic profilePic) {
-        ProfilePic localProfilePic = readProfilePic(profilePic.getImageID().toString());
+        ProfilePic localProfilePic = readProfilePic(profilePic.getUsername());
         if (localProfilePic == null) {
-            createLog(profilePic);
+            createProfilePic(profilePic);
         } else {
             updateProfilePic(profilePic);
         }
-    }
-
-    // Getting display reels. InReel and OutReel, but only OutReel for MVP purposes.
-    public ArrayList<ProfilePic> populateReel() {
-        
-        ArrayList<ProfilePic> reelList = new ArrayList<ProfilePic>();
-        
-        try {
-            
-            Connection connection = ConnectDB.getConnectionToDB();
-
-            String sql = "This is a query that returns 5 pictures. There could be several sorting methods";
-            PreparedStatement statement = connection.prepareStatement(sql);
-
-            // 5 SourceLink fields will be returned and used to populate the reel
-            
-        } catch (SQLException exception) {
-            exception.printStackTrace();
-        } 
-        return reelList;
-    }
-    
-            
+    }         
 }
