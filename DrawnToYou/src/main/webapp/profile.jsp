@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,9 +36,6 @@
                 <button type="submit" id="editBioButton">Edit</button>
             </form>
         </div>
-        <form action="XXXXXXXXXXedit bio servletXXXXXXXXXXXXXXXXXX" method="post">
-                <button type="submit" id="editBioButton">Edit</button>
-            </form>
         <form action="XXXXXXXXXXXXchoose pinned portraitXXXXXXXXXXXXXXx" method="post">
             <input type="image" id="pinnedPortrait" src="https://picsum.photos/250" alt="Pinned Portrait">
         </form>    
@@ -49,36 +45,36 @@
         <%-- Change all these forms so that they open up a new Profile based on the username tied to the image --%>
     <div id="inReel" class="reel">
         <form action="XXXXXXXXXXXXXXXXXXXx" method="post">
-            <input type="image" id="inPic1" class="thumbnail" src="https://picsum.photos/100" alt="X" src="">
+            <input type="image" id="inPic1" class="thumbnail" src="https://picsum.photos/100" alt="X">
         </form>
         <form action="XXXXXXXXXXXXXXXXXXXx" method="post">
-            <input type="image" id="inPic2" class="thumbnail" src="https://picsum.photos/100" alt="X" src="">
+            <input type="image" id="inPic2" class="thumbnail" src="https://picsum.photos/100" alt="X">
         </form>
         <form action="XXXXXXXXXXXXXXXXXXXx" method="post">
-            <input type="image" id="inPic3" class="thumbnail" src="https://picsum.photos/100" alt="X" src="">
+            <input type="image" id="inPic3" class="thumbnail" src="https://picsum.photos/100" alt="X">
         </form>
         <form action="XXXXXXXXXXXXXXXXXXXx" method="post">
-            <input type="image" id="inPic4" class="thumbnail" src="https://picsum.photos/100" alt="X" src="">
+            <input type="image" id="inPic4" class="thumbnail" src="https://picsum.photos/100" alt="X">
         </form>
         <form action="XXXXXXXXXXXXXXXXXXXx" method="post">
-            <input type="image" id="inPic5" class="thumbnail" src="https://picsum.photos/100" alt="X" src="">
+            <input type="image" id="inPic5" class="thumbnail" src="https://picsum.photos/100" alt="X">
         </form>
     </div>
     <div id="outReel" class="reel">
         <form action="XXXXXXXXXXXXXXXXXXXx" method="post">
-            <input type="image" id="outPic1" class="thumbnail" src="https://picsum.photos/100" alt="X" src="">
+            <img id="outPic1" class="thumbnail" src="https://picsum.photos/100" alt="X">
         </form>
         <form action="XXXXXXXXXXXXXXXXXXXx" method="post">
-            <input type="image" id="outPic2" class="thumbnail" src="https://picsum.photos/100" alt="X" src="">
+            <img id="outPic2" class="thumbnail" src="https://picsum.photos/100" alt="X">
         </form>
         <form action="XXXXXXXXXXXXXXXXXXXx" method="post">
-            <input type="image" id="outPic3" class="thumbnail" src="https://picsum.photos/100" alt="X" src="">
+            <img id="outPic3" class="thumbnail" src="https://picsum.photos/100" alt="X">
         </form>
         <form action="XXXXXXXXXXXXXXXXXXXx" method="post">
-            <input type="image" id="outPic4" class="thumbnail" src="https://picsum.photos/100" alt="X" src="">
+            <img id="outPic4" class="thumbnail" src="https://picsum.photos/100" alt="X">
         </form>
         <form action="XXXXXXXXXXXXXXXXXXXx" method="post">
-            <input type="image" id="outPic5" class="thumbnail" src="https://picsum.photos/100" alt="X" src="">
+            <img id="outPic5" class="thumbnail" src="https://picsum.photos/100" alt="X">
         </form>
     </div>
 </body>
