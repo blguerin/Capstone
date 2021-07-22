@@ -1,5 +1,6 @@
 package com.algonquin.drawntoyou.dao;
 
+
 import com.algonquin.drawntoyou.user.User;
 
 import java.sql.Connection;
@@ -14,7 +15,6 @@ public class UserDAO {
 		
 		try {
 		
-	   	// Use this line for all DAO connections.
 	   	Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
 		String sql = "SELECT * FROM drawntoyou.user WHERE email = ? AND password = ?";
@@ -33,5 +33,87 @@ public class UserDAO {
 		return status;
 			
 	}
+	
+	public User readUser(String username) {
+        User user = null;
+        try {
+            
+            Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
+            String sql = "SELECT * FROM USER WHERE Username=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, username);
+
+            ResultSet set = statement.executeQuery();
+            while (set.next()) {
+                user = new User();
+                user.setUsername(set.getString("Username"));
+                user.setEmail(set.getString("Email"));       
+                user.setPassword(set.getString("Password"));
+            }
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return user;
+    }
+    
+    public void createUser(User user) {
+        try {
+            
+            Connection connection = ConnectDB.getInstance().getConnectionToDB();
+
+            String sql = "INSERT INTO USER (Username, Email, Password) VALUES (?, ?, ?);";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getPassword());
+            
+            statement.execute();
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+    
+    public void updatePassword(User user) {
+        try {
+            
+            Connection connection = ConnectDB.getInstance().getConnectionToDB();
+
+            String sql = "UPDATE USER SET Password=? WHERE Username=?;";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, user.getPassword());
+            statement.setString(2, user.getUsername());
+
+            statement.execute();
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+    
+    public void deleteUser(String username) {
+        try {
+  
+            Connection connection = ConnectDB.getInstance().getConnectionToDB();
+
+            String sql = "DELETE FROM USER WHERE Username=?;";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, username);
+
+            statement.execute();
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }     
 }
