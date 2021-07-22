@@ -19,7 +19,7 @@
 <img src="images/login2.gif" style="width:105%;height:90%;position:absolute; top:140px;left:-10px;z-index:1;">
 <center><div class="sign-up-box">
 	<div class="sign-up-text">
-		<center><h1 style="  font-size:xxx-large; background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative; top:100px;">Log In</h1></center>
+		<center><h1 style="  font-size:xxx-large; background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative; top:60px;">Log In</h1></center>
 
 		<form action="VerifyServlet" method="get">
 		<input type="text" name="email" id="email" placeholder="Enter your email address..." style="height:30px;width:300px;background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;border:solid grey 1px; border-radius:50px;position: relative; top:100px;"><br>
