@@ -1,24 +1,13 @@
-package com.algonquin.drawntoyou.user;
+package com.algonquin.drawntoyou.servlets;
 
-import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Random;
-
-import javax.servlet.*;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.*;
+import java.util.Random;
 
 
 
@@ -34,10 +23,10 @@ public class SignUpServlet extends HttpServlet
 	
 	private static final long serialVersionUID = 1L;
 	  static final String DB_URL = "jdbc:mysql://localhost:3306/";
-	  static final String DB_URL_WITH_TABLE = "jdbc:mysql://localhost:3306/SIGN_UP_DATABASE";
+	  static final String DB_URL_WITH_TABLE = "jdbc:mysql://localhost:3306/drawntoyou";
 	  static final String USER = "administrator";
 	  static final String PASS = "rootPasswordDrawn2You";
-	  static final String DB = "SIGN_UP_DATABASE";
+	  static final String DB = "drawntoyou";
 
 
 
@@ -74,7 +63,7 @@ public class SignUpServlet extends HttpServlet
 	    
 	    
 	    
-	    SignUpDatabase sendInfo = new SignUpDatabase();
+	    com.algonquin.drawntoyou.user.SignUpDatabase sendInfo = new com.algonquin.drawntoyou.user.SignUpDatabase();
 	    sendInfo.setUsername(username);
 	    sendInfo.setUsername(password);
 	    sendInfo.setUsername(verificationCode);
@@ -91,7 +80,7 @@ public class SignUpServlet extends HttpServlet
 	      try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 	    	         Statement stmt = conn.createStatement();
 	    	      ) {		      
-	    	         String sql = "CREATE DATABASE SIGN_UP_DATABASE;";
+	    	         String sql = "CREATE DATABASE drawntoyou;";
 	    	         stmt.executeUpdate(sql);
 	    	         System.out.println("Database created successfully...");   	  
 	    	      } catch (SQLException e) {
@@ -102,7 +91,7 @@ public class SignUpServlet extends HttpServlet
 	    	      try(Connection conn = DriverManager.getConnection(DB_URL_WITH_TABLE, USER, PASS);
 	    	    	         Statement stmt = conn.createStatement();
 	    	    	      ) {		      
-	    	    	         String sql = "CREATE TABLE SIGN_UP_INFO(EMAIL VARCHAR(20),PASSWORD VARCHAR(20),VERIFICATION_CODE VARCHAR(4));";
+	    	    	         String sql = "CREATE TABLE user(email VARCHAR(20),password VARCHAR(20));";
 	    	    	         stmt.executeUpdate(sql);
 	    	    	         System.out.println("Table created successfully....");   	  
 	    	    	      } catch (SQLException e) {
@@ -113,13 +102,12 @@ public class SignUpServlet extends HttpServlet
 	    	      try(Connection conn = DriverManager.getConnection(DB_URL_WITH_TABLE, USER, PASS);
 	    	    		  
 	    	  	      ) {		      
-	    	    	  String query = " INSERT INTO SIGN_UP_INFO (EMAIL,PASSWORD,VERIFICATION_CODE)"+ " values (?, ?, ?)";
+	    	    	  String query = " INSERT INTO user (email,password)"+ " values (?, ?)";
 	    	    	   PreparedStatement preparedStmt = conn.prepareStatement(query);
 	    	    	      preparedStmt.setString (1, emailAddress);
 	    	    	      preparedStmt.setString (2, password);
-	    	    	      preparedStmt.setString   (3, verificationCode);
 	    	    	      preparedStmt.execute();
-	    	  	         System.out.println("Values have been added to the table....");   	  
+	    	  	         System.out.println("Values have been added to the table...."+" "+emailAddress+" "+password);   	  
 	    	  	      } catch (SQLException e) {
 	    	  	    	  System.out.println("The user has either been created,\nor there was an error.");
 	    	  	         e.printStackTrace();
