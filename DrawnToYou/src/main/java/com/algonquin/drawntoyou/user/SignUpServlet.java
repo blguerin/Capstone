@@ -1,4 +1,4 @@
-package com.algonquin.drawntoyou.servlets;
+package com.algonquin.drawntoyou.user;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,8 +24,8 @@ public class SignUpServlet extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	  static final String DB_URL = "jdbc:mysql://localhost:3306/";
 	  static final String DB_URL_WITH_TABLE = "jdbc:mysql://localhost:3306/drawntoyou";
-	  static final String USER = "administrator";
-	  static final String PASS = "rootPasswordDrawn2You";
+	  static final String USER = "root";
+	  static final String PASS = "password";
 	  static final String DB = "drawntoyou";
 
 

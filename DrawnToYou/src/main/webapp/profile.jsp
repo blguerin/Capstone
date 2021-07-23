@@ -1,57 +1,45 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="css/style.css" rel="stylesheet" type="text/css"/>
-<title>Drawn To You - Profile</title>
+<title>Profile | DrawnToYou</title>
+<link rel="stylesheet" href="css/profile.css">
+
+<ul>
+  <a href="http://localhost:8080/DrawnToYou/login.jsp">
+  <img src="images/logo.png" style="width:100px;height:100px;border-radius:7px;"/>
+  </a>
+</ul>
+
+<a style="text-decoration:none;" href="http://localhost:8080/DrawnToYou/profile_settings.jsp">
+  <div class="profile_picture">
+  	<img class="profile_picture_image" src="images/user.png"/>
+  </div>
+    	<h1 class="your_profile_text">Your profile</h1>
+</a>
+
 </head>
-<body>
-	<div style="text-align: center">
-	<h1>Welcome to Drawn to You Profile</h1>
-		<form action="LogoutServlet" method="post">
-		<button type="submit">Logout</button>
-		</form>
-	</div>
-	
-	<%-- This is a JSP comment --%>
-	<%--  --%>
-	<%-- "<% %>" lets you include java code right in the JSP file. Uncomment the example below --%>
-	<%-- <h2><% out.println("g'day"); %></h2> --%>
-	
-	
-	<%-- Each user can have only one profile picture (perhaps tied to user object with a src URL or otherwise --%>
-	<%-- drawn from the PROFILEPIC table where user column could have UNIQUE constraint. --%>
-	
-	<%-- TO DO: decide how to implement crud on profile pic, pinned portrait, bio, etc. Add buttons accordingly --%>
-	
-	<div id="personalizedSection">
-        <img id="profilePicture" alt="Profile Picture">
-        <div id="bio">
-            <h3 align="center">Bio</h3>
-            <p align="center">blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <p>
-        </div> 
-        <img id="pinnedPortrait" alt="Pinned Portrait" src="" width="250" height="250">
-    </div>
-    
     
     <%-- These reels will be populated by their respective image objects ProfilePic and Artwork --%>
     <%-- ArrayLists of these objects will be drawn from the DB that will be used to populate these reels --%>
     <%-- Probably sorted by order in DB at first, but can different sorting methods can be implemented later --%>
-    <div id="inReel" class="reel">
-        <img id="inPic1" class="thumbnail" alt="X" src="">
-        <img id="inPic2" class="thumbnail" alt="X" src="">
-        <img id="inPic3" class="thumbnail" alt="X" src="">
-        <img id="inPic4" class="thumbnail" alt="X" src="">
-        <img id="inPic5" class="thumbnail" alt="X" src="">
+    <div  class="reel">
+    <center>
+    	<h1 style="color: white; font-family:'Helvetica'; font-size:30px;">ARTWORK CURATED FOR YOU:</h1>
+        <img   class="images-in-reel" alt="X" src="images/logo.png">
+        <img   class="images-in-reel" alt="X" src="images/logo.png">
+        <img   class="images-in-reel" alt="X" src="images/logo.png">
+        <img   class="images-in-reel" alt="X" src="images/logo.png">
+        <img   class="images-in-reel" alt="X" src="images/logo.png">
+        <img   class="images-in-reel" alt="X" src="images/logo.png">
+        <img   class="images-in-reel" alt="X" src="images/logo.png"></center>
     </div>
-    <div id="outReel" class="reel">
-        <img id="outPic1" class="thumbnail" alt="X" src="">
-        <img id="outPic2" class="thumbnail" alt="X" src="">
-        <img id="outPic3" class="thumbnail" alt="X" src="">
-        <img id="outPic4" class="thumbnail" alt="X" src="">
-        <img id="outPic5" class="thumbnail" alt="X" src="">
+    
+    <div class="biography">
+    	<center><h1 style="font-family:'Helvetica';font-size:60px;">About You</h1></center>
     </div>
+
 </body>
 </html>

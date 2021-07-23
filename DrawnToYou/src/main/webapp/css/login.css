@@ -33,3 +33,20 @@ body{
  border-radius: 9px;
  z-index:2;
 }
+
+@media only screen and (max-width: 1366px) {
+	body{
+	overflow-y: visible;
+	}
+    .background_image {
+        display: none;
+    }
+    .sign-up-box{
+    	position:relative;
+	 	top: -20px;
+ 		background-color: #efefef;
+ 		width: 500px;
+ 		height: 500px;
+    
+    }
+}
