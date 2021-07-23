@@ -1,5 +1,6 @@
 package com.algonquin.drawntoyou.servlets;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,35 +19,23 @@ public class SignUpServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
-	public String verificationCode() {
-		Random randomInt = new Random();
-		String verificationCodeNumber = "0000";
-		
-		return verificationCodeNumber;
+	public int verificationCode() {
+		int min = 0;
+		int max = 9999;		
+		int verificationCode = (int)Math.floor(Math.random()*(max-min+1)+min);		
+		return verificationCode;
 	}
 		
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+	    SignUpServlet getInfo = new SignUpServlet();
 	    String firstName = request.getParameter("firstName");
 	    String lastName = request.getParameter("lastName");
 	    String emailAddress = request.getParameter("emailAddress");
 	    String username = request.getParameter("username");
 	    String password = request.getParameter("password");
-	    SignUpServlet getInfo = new SignUpServlet();
-	    String verificationCode = getInfo.verificationCode();
+	    int verificationCode = getInfo.verificationCode();
 
-	    request.setAttribute("firstName", firstName);
-	    request.setAttribute("lastName", lastName);
-	    request.setAttribute("emailAddress",emailAddress);
-	    request.setAttribute("username", username);
-	    request.setAttribute("password",password);
-	    request.setAttribute("verificationCode", verificationCode);
-	    	   	    
-	    SignUpDatabase sendInfo = new SignUpDatabase();
-	    sendInfo.setUsername(username);
-	    sendInfo.setUsername(password);
-	    sendInfo.setUsername(verificationCode);
-	    
 		Connection connection = ConnectDB.getInstance().getConnectionToDB();
     	      		try {		      
 	    	    	  String query = " INSERT INTO drawntoyou.user (username, firstName, lastName, email, password, verificationCode)"+ 
@@ -57,15 +46,20 @@ public class SignUpServlet extends HttpServlet {
 	    	    	      preparedStmt.setString (3, lastName);
 	    	    	      preparedStmt.setString (4, emailAddress);
 	    	    	      preparedStmt.setString (5, password);
-	    	    	      preparedStmt.setString (6, verificationCode);
+	    	    	      preparedStmt.setInt (6, verificationCode);
 	    	    	      preparedStmt.execute();
 	    	  	         System.out.println("Values have been added to the table...."); 
 	    	  	         
 	    	  	      } catch (SQLException e) {
 	    	  	    	  System.out.println("The user has either been created,\nor there was an error.");
 	    	  	         e.printStackTrace();
-	    	  	      }	    	      	    	      	    	      	    	     	    	      
-	    	      response.sendRedirect("http://localhost:8080/DrawnToYou/verify.jsp");  	
+	    	  	      }	    	      	    
+    	    	RequestDispatcher requestDispatcher = request.getRequestDispatcher("verify.jsp");
+    	    	request.setAttribute("verificationCode", verificationCode);
+    	    	requestDispatcher.forward(request, response);   	    
 		}
-}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	}
+}
