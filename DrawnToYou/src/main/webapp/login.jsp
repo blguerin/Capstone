@@ -21,15 +21,17 @@
 	<div class="sign-up-text">
 		<center><h1 style="  font-size:xxx-large; background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative; top:60px;">Log In</h1></center>
 
-		<form action="VerifyServlet" method="get">
-		<input type="text" name="email" id="email" placeholder="Enter your email address..." style="height:30px;width:300px;background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;border:solid grey 1px; border-radius:50px;position: relative; top:100px;"><br>
-		<input type="password" name="password" id="password" placeholder="Enter your password..." style="height:30px;width:300px;background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;border:solid grey 1px; border-radius:50px;position: relative; top:100px;"><br>
-		
-		<input type="Submit" value="LOG IN" style="color:white;height:30px;width:300px;border:none;border-radius:50px;background: linear-gradient(#3e8bff, #ff5e84);position: relative; top:100px;">
-</form>
-		<center><h1 style="  font-size:xx-large; color:grey;position: relative; top:130px;"">Don't have an account?</h1></center>
+		<form action="http://localhost:8080/DrawnToYou/profile.jsp" method="post">
+			<input type="text" name="email" id="email" placeholder="Enter your email address..." style="height:30px;width:300px;background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;border:solid grey 1px; border-radius:50px;position: relative; top:100px;"><br>
+			<input type="password" name="password" id="password" placeholder="Enter your password..." style="height:30px;width:300px;background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;border:solid grey 1px; border-radius:50px;position: relative; top:100px;"><br>
+			<input type="Submit" value="LOG IN" style="color:white;height:30px;width:300px;border:none;border-radius:50px;background: linear-gradient(#3e8bff, #ff5e84);position: relative; top:100px;">
+		</form>
+		<form action="LoginServlet" method="post">
+			<input type="Submit" value="FORGOT PASSWORD" style="color:white;height:30px;width:300px;border:none;border-radius:50px;background: linear-gradient(#3e8bff, #ff5e84);position: relative; top:100px;">
+		</form>
+		<center><h1 style="  font-size:xx-large; color:grey;position: relative; top:110px;"">Don't have an account?</h1></center>
 		<form action="http://localhost:8080/DrawnToYou/SignUp.jsp">
-    		<input type="Submit" value="SIGN UP" style="color:white;height:30px;width:300px;border:none;border-radius:50px;background: linear-gradient(#3e8bff, #ff5e84); position: relative; top:130px;">
+    		<input type="Submit" value="SIGN UP" style="color:white;height:30px;width:300px;border:none;border-radius:50px;background: linear-gradient(#3e8bff, #ff5e84); position: relative; top:100px;">
         </form>
 </a></div>
 </div></center>
