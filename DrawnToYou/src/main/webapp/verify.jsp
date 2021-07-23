@@ -19,7 +19,6 @@
 <center><div class="sign-up-box">
 	<div class="sign-up-text">
 		<center><h1 style="  font-size:xxx-large; background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Verify Your Account</h1></center>
-		<center><p1 style="position: relative; top: -20px;font-size:medium;color:grey;">Your verification code is ${verificationCode}</p1></center>
 		<form action=LoginServlet method="post">
 		<input type="text" name="verificationCode" id="verificationCode" placeholder="Enter your verification  code..." style="height:30px;width:300px;background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;border:solid grey 1px; border-radius:50px;"><br>
 		
