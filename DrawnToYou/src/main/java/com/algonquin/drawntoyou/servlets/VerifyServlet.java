@@ -22,10 +22,10 @@ public class VerifyServlet extends HttpServlet {
 		 Connection connection = ConnectDB.getInstance().getConnectionToDB();
 		      
 		 try {
-			 String sql = "SELECT * drawntoyou.user WHERE verificationCode = ?";
-			 PreparedStatement preparedStmt = connection.prepareStatement(sql);
-   	         preparedStmt.setString   (1, verificationCode);
-   	         boolean Result = preparedStmt.execute();
+			String sql = "SELECT * drawntoyou.user WHERE verificationCode = ?";
+			PreparedStatement preparedStmt = connection.prepareStatement(sql);
+   	         	preparedStmt.setString   (1, verificationCode);
+   	         	boolean Result = preparedStmt.execute();
    	         if(Result == true) {
    	        	response.sendRedirect("http://localhost:8080/DrawnToYou/");
    	         }
