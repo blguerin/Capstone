@@ -21,6 +21,10 @@ public class User {
 		this.password = password;
 	}
 	
+	public User(String email) {
+		this.email = email;
+	}
+	
 	// Gets n Sets
 	public String getUsername() {
 		return this.username;
