@@ -26,7 +26,7 @@ public class ConnectDB {
             // Database credentials
             String url = "jdbc:mysql://localhost:3306";
             String user = "root";
-            String password = "password";
+            String password = "";
             
             connection = DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException e) {

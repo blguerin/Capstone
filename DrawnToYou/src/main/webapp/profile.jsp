@@ -14,17 +14,6 @@
 	    </form>
 	</div>
 	
-	<%-- This is a JSP comment --%>
-	<%--  --%>
-	<%-- "<% %>" lets you include java code right in the JSP file. Uncomment the example below --%>
-	<%-- <h2><% out.println("g'day"); %></h2> --%>
-	
-	
-	<%-- Each user can have only one profile picture (perhaps tied to user object with a src URL or otherwise --%>
-	<%-- drawn from the PROFILEPIC table where user column could have UNIQUE constraint. --%>
-	
-	<%-- TODO: decide how to implement crud on profile pic, pinned portrait, bio, etc. Add buttons accordingly --%>
-	
 	<div id="personalizedSection">
 	    <form action="XXXXXXXXXchoose profile picXXXXXXXXXX" method="post">
             <input type="image" id="profilePicture" src="${profilePicSource}" alt="Profile Picture">

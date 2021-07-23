@@ -19,12 +19,17 @@
 <center><div class="sign-up-box">
 	<div class="sign-up-text">
 		<center><h1 style="  font-size:xxx-large; background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Verify Your Account</h1></center>
-		<form action=LoginServlet method="post">
+		<form action=VerifyServlet method="post">
+		<input type="hidden" name="username" value="${username}"/>
+		<input type="hidden" name="email" value="${email}"/>
+		<input type="hidden" name="password" value="${password}"/>
+		<input type="hidden" name="code" value="${code}"/>
 		<input type="text" name="verificationCode" id="verificationCode" placeholder="Enter your verification  code..." style="height:30px;width:300px;background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;border:solid grey 1px; border-radius:50px;"><br>
 		
 		<input type="Submit" value="SUBMIT" style="color:white;height:30px;width:300px;border:none;border-radius:50px;background: linear-gradient(#3e8bff, #ff5e84);">
 </form>
 </div></center>
+
 
 </body>
 </html>

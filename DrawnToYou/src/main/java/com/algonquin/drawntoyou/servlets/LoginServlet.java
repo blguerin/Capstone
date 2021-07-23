@@ -71,8 +71,7 @@ public class LoginServlet extends HttpServlet {
 //                
 //                
 //                // Send profile to profile.jsp
-                String destination = "profile.jsp";
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher(destination);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("profile.jsp");
                 
                 request.setAttribute("username", username);
                 request.setAttribute("profilePicSource", profilePicSource);

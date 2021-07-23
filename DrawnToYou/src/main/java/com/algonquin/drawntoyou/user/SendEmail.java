@@ -20,10 +20,10 @@ public class SendEmail {
 		return String.format("%04d", verificationCode);
 	}
 	
-	public boolean sendEmail(User user) {
+	public boolean sendEmail(String email, int code) {
 		boolean test = false;
 			
-		String toEmail = user.getEmail();
+		String toEmail = email;
 		String fromEmail = "drawn.to.you@outlook.com";
 		String password = "iloveJava1";
 		
@@ -49,7 +49,7 @@ public class SendEmail {
 			
 			message.setSubject("Drawn To You User Verification");
 			message.setText("Registerd to Drawn To You successfully. Please verify your account using the verification"
-					+ "code provided in this email. \n Verification code: " + user.getCode());
+					+ "code provided in this email. \n Verification code: " + code);
 			Transport.send(message);
 			
 			test = true;
