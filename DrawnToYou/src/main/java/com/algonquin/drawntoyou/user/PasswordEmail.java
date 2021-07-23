@@ -30,7 +30,7 @@ public class PasswordEmail {
 				Session session = Session.getInstance(pr, new Authenticator() {
 					@Override
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(fromEmail, password);
+					    return new PasswordAuthentication(fromEmail, password);
 					}
 				});
 				
@@ -40,16 +40,15 @@ public class PasswordEmail {
 				message.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
 				
 				message.setSubject("Drawn To You Password Recovery");
-				message.setText(user.getUsername() + " requested password recovery from Drawn To You. Your password is:  " +
-							user.getPassword() + "\nPlease use your password to login.");
+				message.setText("Requested password recovery from Drawn To You. Your password is:  " +
+							user.getPassword() + ". Please use your password to login.");
 				Transport.send(message);
 				
 				test = true;
 				
 			} catch(Exception e) {
 				e.printStackTrace();
-			}
-			
+			}			
 			return test;
 		}
 

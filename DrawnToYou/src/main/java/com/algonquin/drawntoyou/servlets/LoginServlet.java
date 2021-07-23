@@ -43,16 +43,14 @@ public class LoginServlet extends HttpServlet {
             if (userDao.checkLogin(user)) {
                 user = userDao.readUser(email);
                 
-                // This is my debugging tool
-//                PrintWriter writer = response.getWriter();
-//                writer.write("<!DOCTYPE html><html lang=\"en\"><body><h1>" + blah + "</h1></body></html>");
-                
                 Profile profile = new Profile(user.getUsername());
                 
                 String username = profile.getUsername();
                 String profilePicSource = profile.getProfilePicSource();
                 String pinnedPicSource = profile.getPinnedPicSource();
                 String bio = profile.getBio();
+                
+                // This will be important once the reel population is sorted.
 //                InReel inReel = profile.getInReel();
 //                OutReel outReel = profile.getOutReel();
 //                
