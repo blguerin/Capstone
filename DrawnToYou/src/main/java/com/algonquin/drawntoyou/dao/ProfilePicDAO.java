@@ -22,7 +22,7 @@ public class ProfilePicDAO {
         try {
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            String sql = "SELECT * FROM PROFILE_PIC;";
+            String sql = "SELECT * FROM drawntoyou.PROFILE_PIC;";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             ResultSet set = statement.executeQuery();
@@ -45,7 +45,7 @@ public class ProfilePicDAO {
             
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            String sql = "SELECT * FROM PROFILE_PIC WHERE Username=?";
+            String sql = "SELECT * FROM drawntoyou.PROFILE_PIC WHERE Username=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);
 
@@ -69,7 +69,7 @@ public class ProfilePicDAO {
             
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            String sql = "INSERT INTO PROFILE_PIC (Username, Source) VALUES (?, ?);";
+            String sql = "INSERT INTO drawntoyou.PROFILE_PIC (Username, Source) VALUES (?, ?);";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, profilePic.getUsername());
             statement.setString(2, profilePic.getSource());
@@ -88,7 +88,7 @@ public class ProfilePicDAO {
             
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            String sql = "UPDATE PROFILE_PIC SET Source=? WHERE Username=?;";
+            String sql = "UPDATE drawntoyou.PROFILE_PIC SET Source=? WHERE Username=?;";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, profilePic.getSource());
             statement.setString(2, profilePic.getUsername());
@@ -107,7 +107,7 @@ public class ProfilePicDAO {
   
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            String sql = "DELETE FROM PROFILE_PIC WHERE Username=?;";
+            String sql = "DELETE FROM drawntoyou.PROFILE_PIC WHERE Username=?;";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);
 

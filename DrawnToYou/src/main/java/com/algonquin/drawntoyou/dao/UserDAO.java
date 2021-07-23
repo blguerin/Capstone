@@ -17,7 +17,7 @@ public class UserDAO {
 		
 	   	Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-		String sql = "SELECT * FROM drawntoyou.user WHERE email = ? AND password = ?";
+		String sql = "SELECT * FROM drawntoyou.USER WHERE email=? AND password=?";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		
 		statement.setString(1, user.getEmail());
@@ -34,15 +34,15 @@ public class UserDAO {
 			
 	}
 	
-	public User readUser(String username) {
+	public User readUser(String email) {
         User user = null;
         try {
             
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            String sql = "SELECT * FROM USER WHERE Username=?";
+            String sql = "SELECT * FROM drawntoyou.USER WHERE Email=?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, username);
+            statement.setString(1, email);
 
             ResultSet set = statement.executeQuery();
             while (set.next()) {
@@ -65,7 +65,7 @@ public class UserDAO {
             
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            String sql = "INSERT INTO USER (Username, Email, Password) VALUES (?, ?, ?);";
+            String sql = "INSERT INTO drawntoyou.USER (Username, Email, Password) VALUES (?, ?, ?);";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getEmail());
@@ -85,7 +85,7 @@ public class UserDAO {
             
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            String sql = "UPDATE USER SET Password=? WHERE Username=?;";
+            String sql = "UPDATE drawntoyou.USER SET Password=? WHERE Username=?;";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, user.getPassword());
             statement.setString(2, user.getUsername());
@@ -104,7 +104,7 @@ public class UserDAO {
   
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            String sql = "DELETE FROM USER WHERE Username=?;";
+            String sql = "DELETE FROM drawntoyou.USER WHERE Username=?;";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);
 

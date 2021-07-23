@@ -28,26 +28,26 @@ public class Profile {
     public Profile(String username) {
         this.username = username;  
 //        This may cause an infinite loop, test this.
-//        loadPage();
-        inReel = new InReel(username);
-        outReel = new OutReel(username);       
+        loadPage();
+//        this.inReel = new InReel(username);
+//        this.outReel = new OutReel(username);       
     }
 
     
     private void loadPage() {
         ProfilePicDAO profilePicDAO = new ProfilePicDAO();
         if (profilePicDAO.readProfilePic(username) != null) {
-            profilePicSource = profilePicDAO.readProfilePic(username).getSource();
+            this.profilePicSource = profilePicDAO.readProfilePic(username).getSource();
         } else {
-            profilePicSource = "https://www.teqport.com/images/employees/lower_res/Placeholder_no_text.svg.png";
+            this.profilePicSource = "https://www.teqport.com/images/employees/lower_res/Placeholder_no_text.svg.png";
         }
         
         ProfileDAO profileDAO = new ProfileDAO();
-        pinnedPicID = profileDAO.readProfile(username).getPinnedPicID();
-        bio = profileDAO.readProfile(username).getBio();
+        this.pinnedPicID = profileDAO.readProfile(username).getPinnedPicID();
+        this.bio = profileDAO.readProfile(username).getBio();
         
         ArtworkDAO artworkDAO = new ArtworkDAO();
-        pinnedPicSource = artworkDAO.readArtwork(pinnedPicID).getSource();          
+        this.pinnedPicSource = artworkDAO.readArtwork(pinnedPicID).getSource();          
     }
 
     public String getUsername() {

@@ -21,7 +21,7 @@ public Map<String, Profile> readProfilePics() {
         try {
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            String sql = "SELECT * FROM PROFILE;";
+            String sql = "SELECT * FROM drawntoyou.PROFILE;";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             ResultSet set = statement.executeQuery();
@@ -45,7 +45,7 @@ public Map<String, Profile> readProfilePics() {
             
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            String sql = "SELECT * FROM PROFILE WHERE Username=?";
+            String sql = "SELECT * FROM drawntoyou.PROFILE WHERE Username=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);
 
@@ -65,16 +65,16 @@ public Map<String, Profile> readProfilePics() {
         return profile;
     }
     
-    public void createProfile(Profile profile) {
+    public void createProfile(String username) {
         try {
             
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            String sql = "INSERT INTO PROFILE (Username, PinnedPicID, Bio) VALUES (?, ?, ?);";
+            String sql = "INSERT INTO drawntoyou.PROFILE (Username, PinnedPicID, Bio) VALUES (?, ?, ?);";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, profile.getUsername());
+            statement.setString(1, username);
             statement.setString(2, "111");
-            statement.setString(3, "Hi, my name is " + profile.getUsername() + ". Welcome to my profile!");
+            statement.setString(3, "Hi, my name is " + username + ". Welcome to my profile!");
             
             statement.execute();
             
@@ -90,7 +90,7 @@ public Map<String, Profile> readProfilePics() {
             
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            String sql = "UPDATE PROFILE SET Bio=? WHERE Username=?;";
+            String sql = "UPDATE drawntoyou.PROFILE SET Bio=? WHERE Username=?;";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, profile.getBio());
             statement.setString(2, profile.getUsername());
@@ -109,7 +109,7 @@ public Map<String, Profile> readProfilePics() {
             
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            String sql = "UPDATE PROFILE SET PinnedPicID=? WHERE Username=?;";
+            String sql = "UPDATE drawntoyou.PROFILE SET PinnedPicID=? WHERE Username=?;";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, profile.getPinnedPicID());
             statement.setString(2, profile.getUsername());
@@ -128,7 +128,7 @@ public Map<String, Profile> readProfilePics() {
   
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
-            String sql = "DELETE FROM PROFILE WHERE Username=?;";
+            String sql = "DELETE FROM drawntoyou.PROFILE WHERE Username=?;";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);
 

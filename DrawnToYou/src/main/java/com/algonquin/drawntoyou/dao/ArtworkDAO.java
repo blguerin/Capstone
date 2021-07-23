@@ -23,7 +23,7 @@ public class ArtworkDAO {
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
             // write select query to get all the artworks
-            String sql = "SELECT * FROM ARTWORK;";
+            String sql = "SELECT * FROM drawntoyou.ARTWORK;";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             // execute query, get resultset and return User info
@@ -50,7 +50,7 @@ public class ArtworkDAO {
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
             // write select query to get the artwork
-            String sql = "SELECT * FROM ARTWORK WHERE Id=?";
+            String sql = "SELECT * FROM drawntoyou.ARTWORK WHERE Id=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, imageID);
 
@@ -78,7 +78,7 @@ public class ArtworkDAO {
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
             // write select query to get the log (Add date later)
-            String sql = "INSERT INTO ARTWORK (Id, SubmitterUsername, ModelUsername, Source) VALUES (?, ?, ?, ?);";
+            String sql = "INSERT INTO drawntoyou.ARTWORK (Id, SubmitterUsername, ModelUsername, Source) VALUES (?, ?, ?, ?);";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, artwork.getImageID().toString());
             statement.setString(2, artwork.getSubmitterUsername());
@@ -101,7 +101,7 @@ public class ArtworkDAO {
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
             // write select query to get the artwork
-            String sql = "UPDATE ARTWORK SET SubmitterUsername=?, ModelUsername=?, Source=? WHERE Id=?;";
+            String sql = "UPDATE drawntoyou.ARTWORK SET SubmitterUsername=?, ModelUsername=?, Source=? WHERE Id=?;";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, artwork.getSubmitterUsername());
             statement.setString(2, artwork.getModelUsername());
@@ -124,7 +124,7 @@ public class ArtworkDAO {
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
             // write select query to get the log
-            String sql = "DELETE FROM ARTWORK WHERE Id=?;";
+            String sql = "DELETE FROM drawntoyou.ARTWORK WHERE Id=?;";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, UUID.fromString(imageID).toString());
 
@@ -145,28 +145,5 @@ public class ArtworkDAO {
         } else {
             updateArtwork(artwork);
         }
-    }
-
-    // Getting display reels. InReel and OutReel, but only OutReel for MVP purposes. These should be moved to ReelDAO
-    // when created.
-    public ArrayList<Artwork> populateReel() {
-        
-        ArrayList<Artwork> reelList = new ArrayList<Artwork>();
-        
-        try {
-            
-            Connection connection = ConnectDB.getInstance().getConnectionToDB();
-
-            String sql = "This is a query that returns 5 pictures. There could be several sorting methods";
-            PreparedStatement statement = connection.prepareStatement(sql);
-
-            // 5 SourceLink fields will be returned and used to populate the reel
-            
-        } catch (SQLException exception) {
-            exception.printStackTrace();
-        } 
-        return reelList;
-    }
-    
-            
+    }            
 }

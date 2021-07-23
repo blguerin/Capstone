@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.algonquin.drawntoyou.dao.ConnectDB;
-import com.algonquin.drawntoyou.user.SignUpDatabase;
+import com.algonquin.drawntoyou.dao.ProfileDAO;
 
 import java.io.IOException;
 import java.sql.*;
@@ -29,8 +29,6 @@ public class SignUpServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	    SignUpServlet getInfo = new SignUpServlet();
-	    String firstName = request.getParameter("firstName");
-	    String lastName = request.getParameter("lastName");
 	    String emailAddress = request.getParameter("emailAddress");
 	    String username = request.getParameter("username");
 	    String password = request.getParameter("password");
@@ -38,23 +36,24 @@ public class SignUpServlet extends HttpServlet {
 
 		Connection connection = ConnectDB.getInstance().getConnectionToDB();
     	      		try {		      
-	    	    	  String query = " INSERT INTO drawntoyou.user (username, firstName, lastName, email, password, verificationCode)"+ 
-	    	    			  			" values (?, ?, ?, ?, ?, ?)";
-	    	    	   PreparedStatement preparedStmt = connection.prepareStatement(query);
-	    	    	      preparedStmt.setString (1, username);
-	    	    	      preparedStmt.setString (2, firstName);
-	    	    	      preparedStmt.setString (3, lastName);
-	    	    	      preparedStmt.setString (4, emailAddress);
-	    	    	      preparedStmt.setString (5, password);
-	    	    	      preparedStmt.setInt (6, verificationCode);
-	    	    	      preparedStmt.execute();
-	    	  	         System.out.println("Values have been added to the table...."); 
+    	      		    String query = " INSERT INTO drawntoyou.USER (Username, Email, Password)"+ 
+	    	    			  			" values (?, ?, ?)";
+    	      		    PreparedStatement preparedStmt = connection.prepareStatement(query);
+    	      		    preparedStmt.setString (1, username);
+    	      		    preparedStmt.setString (2, emailAddress);
+    	      		    preparedStmt.setString (3, password);
+    	      		    preparedStmt.execute();
+	    	  	        System.out.println("Values have been added to the table...."); 
 	    	  	         
-	    	  	      } catch (SQLException e) {
-	    	  	    	  System.out.println("The user has either been created,\nor there was an error.");
-	    	  	         e.printStackTrace();
-	    	  	      }	    	      	    
-    	    	RequestDispatcher requestDispatcher = request.getRequestDispatcher("verify.jsp");
+	    	  	        // Create initial profile
+	    	  	        ProfileDAO profileDAO = new ProfileDAO();
+	    	  	        profileDAO.createProfile(username);
+	    	  	         
+    	      		} catch (SQLException e) {
+    	      		    System.out.println("The user has either been created,\nor there was an error.");
+	    	  	        e.printStackTrace();
+	    	  	    }	    	      	    
+    	      	RequestDispatcher requestDispatcher = request.getRequestDispatcher("verify.jsp");
     	    	request.setAttribute("verificationCode", verificationCode);
     	    	requestDispatcher.forward(request, response);   	    
 		}
