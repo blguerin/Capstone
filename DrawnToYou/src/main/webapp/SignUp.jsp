@@ -20,7 +20,7 @@
 	<div class="sign-up-text">
 		<center><h1 style=" background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Sign Up</h1></center>
 		<center><p1 style="position: relative; top: -20px;font-size:medium;color:grey;">To access the gallery, commission artists, or create your own artist profile:</p1></center>
-		<form action="SignUpServlet" method="get">
+		<form action="SignUpServlet" method="post">
 		<input type="text" name="emailAddress" id="emailAddress" placeholder="Enter your email address..." style="height:30px;width:300px;background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;border:solid grey 1px; border-radius:50px;""><br>
 		<input type="text" name="username" id="username" placeholder="Enter your username..." style="height:30px;width:300px;background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;border:solid grey 1px; border-radius:50px;"><br>
 		<input type="password" name="password" id="password" placeholder="Enter your password..." style="height:30px;width:300px;background: -webkit-linear-gradient(#3e8bff, #ff5e84);-webkit-background-clip: text;-webkit-text-fill-color: transparent;border:solid grey 1px; border-radius:50px;"><br>

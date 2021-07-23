@@ -73,7 +73,7 @@ public Map<String, Profile> readProfilePics() {
             String sql = "INSERT INTO drawntoyou.PROFILE (Username, PinnedPicID, Bio) VALUES (?, ?, ?);";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);
-            statement.setString(2, "111");
+            statement.setString(2, "10155836-76f7-47ba-a8dc-7ca24d5b0730");
             statement.setString(3, "Hi, my name is " + username + ". Welcome to my profile!");
             
             statement.execute();
