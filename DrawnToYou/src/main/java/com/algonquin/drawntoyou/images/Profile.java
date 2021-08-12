@@ -29,8 +29,8 @@ public class Profile {
         this.username = username;  
 //        This may cause an infinite loop, test this.
         loadPage();
-//        this.inReel = new InReel(username);
-//        this.outReel = new OutReel(username);       
+        this.inReel = new InReel(username);
+        this.outReel = new OutReel(username);       
     }
 
     

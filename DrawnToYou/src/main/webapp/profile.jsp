@@ -50,7 +50,7 @@
         </form>
     </div>
     <div id="outReel" class="reel">
-            <img id="outPic1" class="thumbnail" src="${outReel1})" alt="X">
+            <img id="outPic1" class="thumbnail" src="${outReel1}" alt="X">
             <img id="outPic2" class="thumbnail" src="${outReel2}" alt="X">
             <img id="outPic3" class="thumbnail" src="${outReel3}" alt="X">
             <img id="outPic4" class="thumbnail" src="${outReel4}" alt="X">

@@ -1,6 +1,7 @@
 package com.algonquin.drawntoyou.servlets;
 
 import com.algonquin.drawntoyou.dao.UserDAO;
+import com.algonquin.drawntoyou.images.Artwork;
 import com.algonquin.drawntoyou.images.Profile;
 import com.algonquin.drawntoyou.reels.InReel;
 import com.algonquin.drawntoyou.reels.OutReel;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -51,23 +53,25 @@ public class LoginServlet extends HttpServlet {
                 String bio = profile.getBio();
                 
                 // This will be important once the reel population is sorted.
-//                InReel inReel = profile.getInReel();
-//                OutReel outReel = profile.getOutReel();
-//                
-//                String inReel1 = inReel.getArtwork1().getSource();
-//                String inReel2 = inReel.getArtwork2().getSource();
-//                String inReel3 = inReel.getArtwork3().getSource();
-//                String inReel4 = inReel.getArtwork4().getSource();
-//                String inReel5 = inReel.getArtwork5().getSource();
-//                
-//                String outReel1 = outReel.getArtwork1().getSource();
-//                String outReel2 = outReel.getArtwork2().getSource();
-//                String outReel3 = outReel.getArtwork3().getSource();
-//                String outReel4 = outReel.getArtwork4().getSource();
-//                String outReel5 = outReel.getArtwork5().getSource();
-//                
-//                
-//                
+                InReel inReel = profile.getInReel();
+                OutReel outReel = profile.getOutReel();
+                
+               
+               
+                String inReel1 = inReel.getReelList().get(0).getSource();
+                String inReel2 = inReel.getReelList().get(1).getSource();
+                String inReel3 = inReel.getReelList().get(2).getSource();
+                String inReel4 = inReel.getReelList().get(3).getSource();
+                String inReel5 = inReel.getReelList().get(4).getSource();
+                
+                String outReel1 = outReel.getReelList().get(0).getSource();
+                String outReel2 = outReel.getReelList().get(1).getSource();
+                String outReel3 = outReel.getReelList().get(2).getSource();
+                String outReel4 = outReel.getReelList().get(3).getSource();
+                String outReel5 = outReel.getReelList().get(4).getSource();
+                
+                
+                
 //                // Send profile to profile.jsp
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("profile.jsp");
                 
@@ -75,19 +79,19 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("profilePicSource", profilePicSource);
                 request.setAttribute("pinnedPicSource", pinnedPicSource);
                 request.setAttribute("bio", bio);
-//                
-//                request.setAttribute("inReel1", inReel1);
-//                request.setAttribute("inReel2", inReel2);
-//                request.setAttribute("inReel3", inReel3);
-//                request.setAttribute("inReel4", inReel4);
-//                request.setAttribute("inReel5", inReel5);
-//                
-//                request.setAttribute("outReel1", outReel1);
-//                request.setAttribute("outReel2", outReel2);
-//                request.setAttribute("outReel3", outReel3);
-//                request.setAttribute("outReel4", outReel4);
-//                request.setAttribute("outReel5", outReel5);
-//               response.sendRedirect("profile.jsp"); 
+                
+                request.setAttribute("inReel1", inReel1);
+                request.setAttribute("inReel2", inReel2);
+                request.setAttribute("inReel3", inReel3);
+                request.setAttribute("inReel4", inReel4);
+                request.setAttribute("inReel5", inReel5);
+                
+                request.setAttribute("outReel1", outReel1);
+                request.setAttribute("outReel2", outReel2);
+                request.setAttribute("outReel3", outReel3);
+                request.setAttribute("outReel4", outReel4);
+                request.setAttribute("outReel5", outReel5);
+
                 requestDispatcher.forward(request, response);
                 
                 
