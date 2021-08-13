@@ -6,6 +6,7 @@ import com.algonquin.drawntoyou.images.Profile;
 import com.algonquin.drawntoyou.reels.InReel;
 import com.algonquin.drawntoyou.reels.OutReel;
 import com.algonquin.drawntoyou.user.User;
+import com.algonquin.drawntoyou.user.UserBuilder;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -54,7 +55,7 @@ public class LoginServlet extends HttpServlet {
             e.printStackTrace();
         }
 		
-		User user = new User(email, password);
+		User user = new UserBuilder().setEmail(email).setPassword(password).createUser();
 		
 		try {
             if (userDao.checkLogin(user)) {

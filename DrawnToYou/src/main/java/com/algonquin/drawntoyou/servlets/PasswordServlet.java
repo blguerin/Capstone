@@ -13,6 +13,7 @@ import com.algonquin.drawntoyou.dao.UserDAO;
 import com.algonquin.drawntoyou.user.PasswordEmail;
 import com.algonquin.drawntoyou.user.SendEmail;
 import com.algonquin.drawntoyou.user.User;
+import com.algonquin.drawntoyou.user.UserBuilder;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,7 +40,7 @@ public class PasswordServlet extends HttpServlet {
 			
 			PasswordEmail pass = new PasswordEmail();
 			
-			User user2 = new User(email, password);
+			User user2 = new UserBuilder().setEmail(email).setPassword(password).createUser();
 			boolean test = pass.sendEmail(user2);
 			
 			if(test) {

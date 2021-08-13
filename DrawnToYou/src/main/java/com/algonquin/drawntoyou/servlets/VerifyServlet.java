@@ -10,6 +10,7 @@ import com.algonquin.drawntoyou.dao.ConnectDB;
 import com.algonquin.drawntoyou.dao.ProfileDAO;
 import com.algonquin.drawntoyou.dao.UserDAO;
 import com.algonquin.drawntoyou.user.User;
+import com.algonquin.drawntoyou.user.UserBuilder;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -19,19 +20,24 @@ import java.sql.*;
 
 @WebServlet("/VerifyServlet")
 public class VerifyServlet extends HttpServlet {
+    
+    private String username;
+    private String email;
+    private String password;
+    private String code;
+    
 	
     private static final long serialVersionUID = 1L;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	    String verificationCode = request.getParameter("verificationCode");		 
-		Connection connection = ConnectDB.getInstance().getConnectionToDB();
 		 
-		String username = request.getParameter("username");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		String code = request.getParameter("code");
-         
+		username = request.getParameter("username");
+		email = request.getParameter("email");
+		password = request.getParameter("password");
+		code = request.getParameter("code");
+		
 		// Check the user's answer against the generated verification code.
 		if (verificationCode.equals(code)) {
 		    
@@ -47,13 +53,17 @@ public class VerifyServlet extends HttpServlet {
 	            password = sb.toString();
 	        } catch (NoSuchAlgorithmException e) {
 	            e.printStackTrace();
-	        }
-             
-		    User user = new User(username, email, password);
-         
-		    // Save user in DB
+	        }              
+		    
+		    // Create user via UserBuilder and save in DB.
 		    UserDAO userDAO = new UserDAO();
-		    userDAO.createUser(user);
+		    userDAO.createUser(
+		            new UserBuilder()
+		            .setUsername(username)
+		            .setEmail(email)
+		            .setPassword(password)
+		            .createUser()
+		            );
          
 		    // Create and save an initial profile for new user.
 		    ProfileDAO profileDAO = new ProfileDAO();

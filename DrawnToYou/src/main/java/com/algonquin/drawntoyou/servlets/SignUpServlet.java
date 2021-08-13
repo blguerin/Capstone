@@ -41,11 +41,9 @@ public class SignUpServlet extends HttpServlet {
             
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("verify.jsp");
             SendEmail sendEmail = new SendEmail();
-            
             boolean test = sendEmail.sendEmail(email, code);
             
             if(test) {
-                System.out.println("Email successful");
                 
                 request.setAttribute("username", username);
                 request.setAttribute("email", email);

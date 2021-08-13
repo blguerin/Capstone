@@ -34,8 +34,6 @@ public class UpdateBioServlet extends HttpServlet {
         ProfileDAO profileDAO = new ProfileDAO();
         profileDAO.updateBio(username, newBio);
         
-        System.out.println("new bio is: " + newBio);
-        
         Profile profile = new Profile(username);
         
         String username = profile.getUsername();
