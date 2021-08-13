@@ -12,8 +12,19 @@ h1 {
     border-radius: 25px;
     padding-left: 25px;
     padding-right: 25px;
+    text-align: center
 
 }
+
+textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
 button {
     background-color: #0f62ab;
     color: white;

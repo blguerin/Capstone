@@ -30,8 +30,6 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -52,17 +50,20 @@ public class LoginServlet extends HttpServlet {
                 String pinnedPicSource = profile.getPinnedPicSource();
                 String bio = profile.getBio();
                 
-                // This will be important once the reel population is sorted.
                 InReel inReel = profile.getInReel();
                 OutReel outReel = profile.getOutReel();
-                
-               
-               
+                           
                 String inReel1 = inReel.getReelList().get(0).getSource();
                 String inReel2 = inReel.getReelList().get(1).getSource();
                 String inReel3 = inReel.getReelList().get(2).getSource();
                 String inReel4 = inReel.getReelList().get(3).getSource();
                 String inReel5 = inReel.getReelList().get(4).getSource();
+                
+                String inReelID1 = inReel.getReelList().get(0).getImageID().toString();
+                String inReelID2 = inReel.getReelList().get(1).getImageID().toString();
+                String inReelID3 = inReel.getReelList().get(2).getImageID().toString();
+                String inReelID4 = inReel.getReelList().get(3).getImageID().toString();
+                String inReelID5 = inReel.getReelList().get(4).getImageID().toString();
                 
                 String outReel1 = outReel.getReelList().get(0).getSource();
                 String outReel2 = outReel.getReelList().get(1).getSource();
@@ -70,9 +71,6 @@ public class LoginServlet extends HttpServlet {
                 String outReel4 = outReel.getReelList().get(3).getSource();
                 String outReel5 = outReel.getReelList().get(4).getSource();
                 
-                
-                
-//                // Send profile to profile.jsp
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("profile.jsp");
                 
                 request.setAttribute("username", username);
@@ -85,6 +83,12 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("inReel3", inReel3);
                 request.setAttribute("inReel4", inReel4);
                 request.setAttribute("inReel5", inReel5);
+                
+                request.setAttribute("inReelID1", inReelID1);
+                request.setAttribute("inReelID2", inReelID2);
+                request.setAttribute("inReelID3", inReelID3);
+                request.setAttribute("inReelID4", inReelID4);
+                request.setAttribute("inReelID5", inReelID5);
                 
                 request.setAttribute("outReel1", outReel1);
                 request.setAttribute("outReel2", outReel2);

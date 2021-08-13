@@ -85,15 +85,15 @@ public Map<String, Profile> readProfilePics() {
         }
     }
     
-    public void updateBio(Profile profile) {
+    public void updateBio(String username, String bio) {
         try {
             
             Connection connection = ConnectDB.getInstance().getConnectionToDB();
 
             String sql = "UPDATE drawntoyou.PROFILE SET Bio=? WHERE Username=?;";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, profile.getBio());
-            statement.setString(2, profile.getUsername());
+            statement.setString(1, bio);
+            statement.setString(2, username);
 
             statement.execute();
             
