@@ -23,6 +23,8 @@ public class EditBioServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    
+	    // Chain user data along to edit-bio page
 	    username = request.getParameter("username");
 	    bio = request.getParameter("bio");
 	    

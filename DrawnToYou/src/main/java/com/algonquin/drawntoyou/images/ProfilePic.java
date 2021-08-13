@@ -14,6 +14,7 @@ public class ProfilePic {
         this.source = source;
     }
 
+    // gets & sets
     public String getUsername() {
         return username;
     }

@@ -26,6 +26,8 @@ public class UpdateBioServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        // Get new bio from textarea in jsp. Replace old bio in DB.
         username = request.getParameter("username");
         newBio = request.getParameter("newBio");
         

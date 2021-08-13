@@ -27,13 +27,12 @@ public class Profile {
     
     public Profile(String username) {
         this.username = username;  
-//        This may cause an infinite loop, test this.
         loadPage();
         this.inReel = new InReel(username);
         this.outReel = new OutReel(username);       
     }
 
-    
+    // Load a profile with settings saved in the database.
     private void loadPage() {
         ProfilePicDAO profilePicDAO = new ProfilePicDAO();
         if (profilePicDAO.readProfilePic(username) != null) {
@@ -50,6 +49,7 @@ public class Profile {
         this.pinnedPicSource = artworkDAO.readArtwork(pinnedPicID).getSource();          
     }
 
+    // gets & sets
     public String getUsername() {
         return username;
     }

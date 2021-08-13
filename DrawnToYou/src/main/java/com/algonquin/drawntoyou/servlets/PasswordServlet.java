@@ -25,14 +25,9 @@ public class PasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-//	    String email = request.getParameter("emailAddress");
-//	    UserDAO user = new UserDAO();
-//	    String password = user.readUser(email).getPassword();
-
-	    processRequest(request, response);	    
-		}
 	
+	    processRequest(request, response);	    
+		}	
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("test/html;charset=UTF-8");

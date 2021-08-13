@@ -134,6 +134,8 @@ public class ArtworkDAO {
         }
     }            
     
+    // DAO methods for populating the 2 reel types
+    
     public ArrayList<Artwork> getInReel(String modelUsername) {
         
         Artwork artwork = null;

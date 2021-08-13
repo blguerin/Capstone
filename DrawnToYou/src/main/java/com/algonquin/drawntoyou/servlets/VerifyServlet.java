@@ -12,6 +12,9 @@ import com.algonquin.drawntoyou.dao.UserDAO;
 import com.algonquin.drawntoyou.user.User;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
 @WebServlet("/VerifyServlet")
@@ -20,7 +23,7 @@ public class VerifyServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 
+		
 	    String verificationCode = request.getParameter("verificationCode");		 
 		Connection connection = ConnectDB.getInstance().getConnectionToDB();
 		 
@@ -31,6 +34,20 @@ public class VerifyServlet extends HttpServlet {
          
 		// Check the user's answer against the generated verification code.
 		if (verificationCode.equals(code)) {
+		    
+		    // Encrypt password with MD5
+		    try {
+	            MessageDigest md = MessageDigest.getInstance("MD5");
+	            md.update(password.getBytes(StandardCharsets.UTF_8));
+	            byte[] hashBytes = md.digest();
+	            StringBuilder sb = new StringBuilder();
+	            for (byte b : hashBytes) {
+	                sb.append(String.format("%02x", b));
+	            }
+	            password = sb.toString();
+	        } catch (NoSuchAlgorithmException e) {
+	            e.printStackTrace();
+	        }
              
 		    User user = new User(username, email, password);
          
